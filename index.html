@@ -259,6 +259,7 @@ footer .links{display:flex;flex-wrap:wrap;gap:24px 40px;font-size:12px;letter-sp
 </div>
 </div>
 <form id="join" novalidate>
+<input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
 <label class="f">PRÉNOM ET NOM<input type="text" name="nom" autocomplete="name" required></label>
 <label class="f">E-MAIL<input type="email" name="email" autocomplete="email" required></label>
 <label class="f">ORGANISATION ET FONCTION<input type="text" name="organisation" autocomplete="organization-title"></label>
@@ -273,7 +274,7 @@ footer .links{display:flex;flex-wrap:wrap;gap:24px 40px;font-size:12px;letter-sp
 <footer>
 <span class="logo">CERCLE MONGE</span>
 <div class="links mono">
-<a href="mailto:contact@cerclemonge.fr">CONTACT@CERCLEMONGE.FR</a>
+<a href="mailto:thomas@victoire.ai">THOMAS@VICTOIRE.AI</a>
 <span>PHOTOS : WIKIMEDIA COMMONS</span>
 <span>© 2026</span>
 </div>
@@ -281,7 +282,7 @@ footer .links{display:flex;flex-wrap:wrap;gap:24px 40px;font-size:12px;letter-sp
 
 <script>
 (function(){
-  var CONTACT = 'contact@cerclemonge.fr';
+  var CONTACT = 'thomas@victoire.ai';
   var hdr = document.getElementById('hdr');
   function onScroll(){ hdr.classList.toggle('solid', window.scrollY > 40); }
   window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
@@ -309,9 +310,30 @@ footer .links{display:flex;flex-wrap:wrap;gap:24px 40px;font-size:12px;letter-sp
     var f = e.target, msg = document.getElementById('msg');
     if (!f.nom.value.trim() || !f.email.value.trim()) { msg.textContent = 'Merci d’indiquer votre nom et votre e-mail.'; return; }
     if (!f.rgpd.checked) { msg.textContent = 'Merci d’accepter l’utilisation de vos données.'; return; }
-    var body = 'Profil : ' + labels[current] + '\nNom : ' + f.nom.value + '\nE-mail : ' + f.email.value + '\nOrganisation : ' + f.organisation.value + '\n\n' + questions[current] + ' :\n' + f.message.value;
-    window.location.href = 'mailto:' + CONTACT + '?subject=' + encodeURIComponent('Candidature Cercle Monge — ' + labels[current]) + '&body=' + encodeURIComponent(body);
-    msg.textContent = 'Votre messagerie s’ouvre pour envoyer la candidature.';
+    var btn = f.querySelector('.submit');
+    btn.disabled = true; btn.style.opacity = '.6';
+    msg.textContent = 'Envoi en cours\u2026';
+    fetch('https://formsubmit.co/ajax/' + CONTACT, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+      body: JSON.stringify({
+        _subject: 'Candidature Cercle Monge \u2014 ' + labels[current],
+        _template: 'table',
+        _honey: f._honey.value,
+        Profil: labels[current],
+        Nom: f.nom.value,
+        email: f.email.value,
+        Organisation: f.organisation.value,
+        Message: f.message.value
+      })
+    }).then(function(r){ return r.json(); }).then(function(data){
+      if (data && (data.success === true || data.success === 'true')) {
+        f.reset(); setRole(current);
+        msg.textContent = 'Merci. Votre candidature a bien \u00e9t\u00e9 envoy\u00e9e, nous revenons vers vous rapidement.';
+      } else { throw new Error('fail'); }
+    }).catch(function(){
+      msg.innerHTML = 'L\u2019envoi a \u00e9chou\u00e9. \u00c9crivez-nous directement \u00e0 <a href="mailto:' + CONTACT + '" style="text-decoration:underline">' + CONTACT + '</a>.';
+    }).then(function(){ btn.disabled = false; btn.style.opacity = ''; });
   });
 })();
 </script>
