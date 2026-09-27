@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cercle Monge — Science, industrie, armées</title>
+<meta name="description" content="Le Cercle Monge réunit officiers généraux, anciens de la DGA et dirigeants de la BITD avec les fondateurs de la nouvelle génération défense.">
+<meta property="og:title" content="Cercle Monge">
+<meta property="og:description" content="La Vieille Garde arme la Jeune Garde. Un cercle fermé entre seniors de la défense et fondateurs defense tech.">
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/French_Caesarrs_light_up_the_sky_%287708795%29.jpg/1920px-French_Caesarrs_light_up_the_sky_%287708795%29.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23000'/%3E%3Ccircle cx='16' cy='16' r='12' fill='none' stroke='%23D4A94F' stroke-width='2'/%3E%3Cellipse cx='16' cy='16' rx='10' ry='6' fill='none' stroke='%23F4F2EC' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#F4F2EC;--bg:#000;--muted:#B8B4AA;--dim:#8A867C;--line:#1E1E1E;--accent:#D4A94F;--pad:clamp(20px,4.5vw,64px)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Archivo',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{display:block}
+.mono{font-family:'IBM Plex Mono',monospace;letter-spacing:.2em;font-size:13px}
+.eyebrow{color:var(--accent)}
+.display{margin:0;font-weight:800;font-stretch:118%;text-transform:uppercase;line-height:1.02;font-size:clamp(38px,5vw,72px)}
+.lead{margin:0;font-size:clamp(16px,1.4vw,19px);line-height:1.55;color:#D9D5CB}
+.btn{align-self:flex-start;display:inline-flex;align-items:center;gap:16px;height:56px;padding:0 28px;border:2px solid var(--ink);font-weight:700;font-stretch:112%;font-size:14px;letter-spacing:.2em;transition:background .2s,color .2s}
+.btn:hover{background:var(--ink);color:#000}
+.btn svg{flex:none}
+
+/* nav */
+header{position:fixed;top:0;left:0;right:0;height:84px;padding:0 var(--pad);display:flex;align-items:center;justify-content:space-between;z-index:10;transition:background .3s}
+header.solid{background:rgba(0,0,0,.92);border-bottom:1px solid var(--line)}
+.logo{font-weight:800;font-stretch:125%;font-size:20px;letter-spacing:.34em}
+nav{display:flex;gap:34px;font-weight:600;font-stretch:112%;font-size:13px;letter-spacing:.18em}
+nav a:hover{color:var(--accent)}
+.nav-cta{height:44px;padding:0 22px;font-size:13px}
+
+/* photo panels */
+.panel{position:relative;min-height:100vh;max-height:1100px;height:900px;overflow:hidden;background:#000}
+.panel>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.panel>img,.monge-fig img{filter:grayscale(1)}
+.scrim{position:absolute;inset:0}
+.panel .content{position:absolute;left:var(--pad);bottom:clamp(48px,8vh,96px);width:min(640px,calc(100% - 2*var(--pad)));display:flex;flex-direction:column;gap:24px}
+.credit{position:absolute;right:var(--pad);bottom:clamp(20px,8vh,96px);font-size:11px;letter-spacing:.14em;color:var(--dim)}
+#top>img{object-position:center 30%;filter:grayscale(1) brightness(.82) contrast(1.08)}
+#top .scrim{background:linear-gradient(180deg,rgba(0,0,0,.75) 0%,rgba(0,0,0,0) 22%,rgba(0,0,0,0) 45%,rgba(0,0,0,.9) 100%)}
+#vieille>img{left:auto;right:0;width:min(960px,100%);object-position:center 42%}
+#vieille .scrim{background:linear-gradient(90deg,#000 0%,#000 34%,rgba(0,0,0,0) 62%)}
+#jeune>img{object-position:65% 40%;filter:grayscale(1) brightness(.78) contrast(1.1)}
+#jeune .scrim{background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,0) 20%,rgba(0,0,0,0) 50%,rgba(0,0,0,.9) 100%)}
+
+/* light panels */
+.light{background:var(--ink);color:#0A0A0A;padding:clamp(72px,10vw,120px) var(--pad)}
+.light .dim{color:#5E5B53}
+.mission{display:flex;flex-direction:column;gap:64px}
+.mission .statement{margin:0;max-width:1180px;font-weight:600;font-stretch:108%;font-size:clamp(30px,4.4vw,64px);line-height:1.08;letter-spacing:-.01em}
+.mission .statement span{color:#8A867C}
+.cols{display:flex;flex-wrap:wrap;gap:32px 64px;font-size:17px;line-height:1.55;color:#3E3C37}
+.cols p{margin:0;max-width:420px}
+</style>
+<style>
+/* table */
+#table{position:relative;min-height:900px;border-top:1px solid #141414;padding:0 var(--pad);display:flex;align-items:center;gap:48px}
+#table .content{position:static;flex:1 1 520px;max-width:600px;display:flex;flex-direction:column;gap:24px}
+#table svg{flex:1 1 520px;max-width:620px;height:auto}
+.table-label{position:absolute;right:var(--pad);top:120px;text-align:right;display:flex;flex-direction:column;gap:6px;font-size:12px;letter-spacing:.14em;color:#77746B}
+
+/* specs */
+.specs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:0 var(--pad)}
+.spec{padding:72px 32px;display:flex;flex-direction:column;gap:16px;border-left:1px solid var(--line)}
+.spec:first-child{border-left:0;padding-left:0}
+.spec b{font-weight:800;font-stretch:125%;font-size:clamp(56px,6vw,96px);line-height:1}
+.spec span{color:var(--dim)}
+
+/* charte */
+.charte{display:flex;flex-direction:column;gap:72px}
+.charte-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px}
+.charte-head p{margin:0;max-width:380px;font-size:17px;line-height:1.55;color:#3E3C37}
+.rules{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:2px solid #0A0A0A}
+.rule{padding:32px 32px 0;border-left:1px solid #CFCBC0;display:flex;flex-direction:column;gap:16px}
+.rule:first-child{border-left:0;padding-left:0}
+.rule .n{font-weight:800;font-stretch:125%;font-size:48px;line-height:1}
+.rule .t{font-weight:700;font-stretch:112%;font-size:20px;letter-spacing:.06em;text-transform:uppercase}
+.rule .d{font-size:16px;line-height:1.55;color:#3E3C37}
+
+/* monge */
+#monge{position:relative;min-height:900px;padding:0 var(--pad);display:flex;align-items:center;gap:64px;flex-wrap:wrap-reverse}
+#monge .content{position:static;flex:1 1 480px;max-width:600px;display:flex;flex-direction:column;gap:24px;padding:64px 0}
+.monge-fig{position:relative;flex:1 1 480px;max-width:660px;aspect-ratio:1}
+.monge-fig svg{position:absolute;inset:0;width:100%;height:100%}
+.monge-fig img{position:absolute;left:7.6%;top:7.6%;width:84.8%;height:84.8%;border-radius:50%;object-fit:cover;object-position:52% 46%;filter:grayscale(1) contrast(1.15)}
+
+/* rejoindre */
+#rejoindre{border-top:1px solid var(--line);padding:clamp(72px,10vw,120px) var(--pad);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:96px}
+.join-left{display:flex;flex-direction:column;gap:32px}
+.roles{display:flex;flex-direction:column;border-top:1px solid #2A2A2A}
+.role{width:100%;min-height:76px;padding:0;background:transparent;border:0;border-bottom:1px solid #2A2A2A;display:flex;align-items:center;justify-content:space-between;font-family:'Archivo',sans-serif;font-weight:800;font-stretch:118%;font-size:clamp(22px,2vw,28px);letter-spacing:.04em;cursor:pointer;color:#5E5B53;text-align:left}
+.role[aria-pressed="true"]{color:var(--accent)}
+.role .mono{font-weight:400;font-stretch:100%;letter-spacing:.14em}
+form{display:flex;flex-direction:column;gap:26px;padding-top:44px}
+label.f{display:flex;flex-direction:column;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.2em;color:var(--dim)}
+label.f input,label.f textarea{padding:12px 0;background:transparent;border:0;border-bottom:1px solid #3A3935;color:var(--ink);font-family:'Archivo',sans-serif;font-size:20px;letter-spacing:0;border-radius:0}
+label.f input:focus,label.f textarea:focus{outline:none;border-bottom-color:var(--accent)}
+.consent{display:flex;gap:14px;align-items:flex-start;font-size:15px;line-height:1.5;color:var(--dim)}
+.consent input{width:20px;height:20px;margin:2px 0 0;accent-color:var(--ink);flex:none}
+.submit{margin-top:12px;height:64px;background:var(--ink);color:#000;border:0;display:flex;align-items:center;justify-content:space-between;padding:0 28px;font-family:'Archivo',sans-serif;font-weight:800;font-stretch:112%;font-size:15px;letter-spacing:.2em;cursor:pointer}
+.submit:hover{background:var(--accent)}
+.form-msg{min-height:1.5em;font-size:15px;color:var(--accent)}
+
+footer{min-height:180px;padding:40px var(--pad);border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between}
+footer .links{display:flex;flex-wrap:wrap;gap:24px 40px;font-size:12px;letter-spacing:.14em;color:#77746B}
+
+@media (max-width:960px){
+  nav{display:none}
+  .specs{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .spec:nth-child(3){border-left:0;padding-left:0}
+  .spec{padding:48px 20px}
+  .rules{grid-template-columns:1fr}
+  .rule{border-left:0;padding:28px 0;border-bottom:1px solid #CFCBC0}
+  #rejoindre{grid-template-columns:1fr;gap:24px}
+  #vieille>img{width:100%;opacity:.6}
+  #table{flex-direction:column-reverse;justify-content:center;padding-top:120px;padding-bottom:72px}
+  .table-label{display:none}
+  .credit{display:none}
+}
+</style>
+</head>
+<body>
+<header id="hdr">
+<a href="#top" class="logo">CERCLE MONGE</a>
+<nav aria-label="Navigation principale">
+<a href="#vieille">VIEILLE GARDE</a>
+<a href="#jeune">JEUNE GARDE</a>
+<a href="#table">LA TABLE</a>
+<a href="#charte">CHARTE</a>
+<a href="#monge">MONGE</a>
+</nav>
+<a href="#rejoindre" class="btn nav-cta">REJOINDRE</a>
+</header>
+
+<main>
+<section id="top" class="panel">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/French_Caesarrs_light_up_the_sky_%287708795%29.jpg/1920px-French_Caesarrs_light_up_the_sky_%287708795%29.jpg" alt="Artilleurs français à côté d'un canon CAESAR en train de tirer" fetchpriority="high">
+<div class="scrim"></div>
+<div class="content">
+<div class="mono eyebrow">SCIENCE — INDUSTRIE — ARMÉES</div>
+<h1 class="display">La Vieille Garde<br>arme la Jeune Garde</h1>
+<p class="lead">Un cercle fermé où officiers généraux, anciens de la DGA et dirigeants de la BITD rencontrent les fondateurs de la nouvelle génération défense.</p>
+<a href="#rejoindre" class="btn">REJOINDRE LE CERCLE <svg width="18" height="12" viewBox="0 0 18 12" fill="none" aria-hidden="true"><path d="M0 6h16M11 1l5 5-5 5" stroke="currentColor" stroke-width="2"/></svg></a>
+</div>
+<div class="credit mono">PHOTO DVIDS — DOMAINE PUBLIC</div>
+</section>
+
+<section class="light mission">
+<div class="mono dim" style="display:flex;justify-content:space-between"><span>01 / MISSION</span><span>CERCLE MONGE</span></div>
+<p class="statement">Les armées cherchent des innovateurs. Les innovateurs cherchent les armées. <span>Entre les deux, des années de cycle et des portes fermées.</span> Le Cercle Monge les met à la même table.</p>
+<div class="cols">
+<p>Une génération de fondateurs construit drones, IA, cyber et robotique pour la défense. Beaucoup viennent du civil et ignorent à quelle porte frapper.</p>
+<p>Des officiers généraux et des anciens de la DGA ont la connaissance du terrain et du système. Et l'envie de transmettre.</p>
+</div>
+</section>
+
+<section id="vieille" class="panel">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Saint_Louis_des_Invalides_Eglise_du_D%C3%B4me_de_nuit_by_night.jpg/1280px-Saint_Louis_des_Invalides_Eglise_du_D%C3%B4me_de_nuit_by_night.jpg" alt="Le Dôme des Invalides illuminé la nuit" loading="lazy">
+<div class="scrim"></div>
+<div class="content">
+<div class="mono eyebrow">02 / LES PARRAINS</div>
+<h2 class="display">La Vieille Garde</h2>
+<p class="lead">Officiers généraux en 2e section, anciens de la DGA et de l'AID, dirigeants de la BITD. Ils ont servi, commandé, construit. Ils transmettent, sans rien vendre.</p>
+<a href="#rejoindre" class="btn" data-role="parrain">DEVENIR PARRAIN <svg width="18" height="12" viewBox="0 0 18 12" fill="none" aria-hidden="true"><path d="M0 6h16M11 1l5 5-5 5" stroke="currentColor" stroke-width="2"/></svg></a>
+</div>
+<div class="credit mono">DÔME DES INVALIDES — CC0</div>
+</section>
+
+<section id="jeune" class="panel">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Keen_Sword_25-_Honey_Badger_X8_Drone_Does_Reconnaissance_on_Target_Island_%288727512%29.jpg/1920px-Keen_Sword_25-_Honey_Badger_X8_Drone_Does_Reconnaissance_on_Target_Island_%288727512%29.jpg" alt="Drone de reconnaissance quadrirotor posé au sol" loading="lazy">
+<div class="scrim"></div>
+<div class="content">
+<div class="mono eyebrow">03 / LES FONDATEURS</div>
+<h2 class="display">La Jeune Garde</h2>
+<p class="lead">Drones, IA, cyber, robotique, spatial. Un produit réel, un blocage concret d'accès au marché défense. Et l'ambition d'équiper les armées françaises.</p>
+<a href="#rejoindre" class="btn" data-role="fondateur">CANDIDATER <svg width="18" height="12" viewBox="0 0 18 12" fill="none" aria-hidden="true"><path d="M0 6h16M11 1l5 5-5 5" stroke="currentColor" stroke-width="2"/></svg></a>
+</div>
+<div class="credit mono">PHOTO DVIDS — DOMAINE PUBLIC</div>
+</section>
+
+<section id="table">
+<div class="content">
+<div class="mono eyebrow">04 / LE FORMAT</div>
+<h2 class="display">Une table.<br>Dix couverts.</h2>
+<p class="lead" style="color:var(--muted)">Un dîner par mois. Chaque fondateur expose son blocage en trois minutes. Puis on parle franchement, sous la règle de Chatham House. Les mises en relation promises sont faites sous 48 heures.</p>
+<a href="#charte" class="btn">LIRE LA CHARTE <svg width="18" height="12" viewBox="0 0 18 12" fill="none" aria-hidden="true"><path d="M0 6h16M11 1l5 5-5 5" stroke="currentColor" stroke-width="2"/></svg></a>
+</div>
+<svg viewBox="740 190 600 420" fill="none" role="img" aria-label="Plan de table : quatre parrains et six fondateurs autour d'une table">
+<rect x="760" y="300" width="560" height="220" stroke="#F4F2EC" stroke-width="2"/>
+<line x1="760" y1="410" x2="1320" y2="410" stroke="#2A2A2A" stroke-dasharray="3 7"/>
+<g stroke="#F4F2EC" stroke-width="1.5"><circle cx="816" cy="246" r="26"/><circle cx="1040" cy="246" r="26"/><circle cx="1264" cy="246" r="26"/><circle cx="816" cy="574" r="26"/><circle cx="1040" cy="574" r="26"/><circle cx="1264" cy="574" r="26"/></g>
+<g fill="#D4A94F"><circle cx="928" cy="246" r="26"/><circle cx="1152" cy="246" r="26"/><circle cx="928" cy="574" r="26"/><circle cx="1152" cy="574" r="26"/></g>
+<g font-family="IBM Plex Mono, monospace" font-size="14" font-weight="500" text-anchor="middle">
+<text x="816" y="251" fill="#F4F2EC">F</text><text x="1040" y="251" fill="#F4F2EC">F</text><text x="1264" y="251" fill="#F4F2EC">F</text>
+<text x="816" y="579" fill="#F4F2EC">F</text><text x="1040" y="579" fill="#F4F2EC">F</text><text x="1264" y="579" fill="#F4F2EC">F</text>
+<text x="928" y="251" fill="#000">P</text><text x="1152" y="251" fill="#000">P</text><text x="928" y="579" fill="#000">P</text><text x="1152" y="579" fill="#000">P</text>
+</g>
+<text x="1040" y="415" font-family="IBM Plex Mono, monospace" font-size="12" letter-spacing="2" fill="#77746B" text-anchor="middle">CHATHAM HOUSE</text>
+</svg>
+<div class="table-label mono"><span>PLAN DE TABLE</span><span>P = PARRAIN · F = FONDATEUR</span></div>
+</section>
+
+<section class="specs">
+<div class="spec"><b>1</b><span class="mono">DÎNER PAR MOIS</span></div>
+<div class="spec"><b>4</b><span class="mono">PARRAINS À TABLE</span></div>
+<div class="spec"><b>6</b><span class="mono">FONDATEURS SÉLECTIONNÉS</span></div>
+<div class="spec"><b style="color:var(--accent)">0 €</b><span class="mono">DE COMMISSION</span></div>
+</section>
+
+<section id="charte" class="light charte">
+<div class="charte-head">
+<div style="display:flex;flex-direction:column;gap:20px">
+<div class="mono dim">05 / LA CHARTE</div>
+<h2 class="display" style="font-size:clamp(36px,4.4vw,64px)">Quatre règles.<br>Aucune exception.</h2>
+</div>
+<p>Le Cercle est une association d'intérêt général. Il ne vend rien et ne prend rien.</p>
+</div>
+<div class="rules">
+<div class="rule"><span class="n">I</span><span class="t">Chatham House</span><span class="d">Ce qui se dit à table n'est jamais attribué.</span></div>
+<div class="rule"><span class="n">II</span><span class="t">Pas de démarchage</span><span class="d">On vient pour échanger, pas pour vendre.</span></div>
+<div class="rule"><span class="n">III</span><span class="t">Déontologie</span><span class="d">Aucun conflit d'intérêts actif. Règles de reconversion respectées.</span></div>
+<div class="rule"><span class="n">IV</span><span class="t">Désintéressement</span><span class="d">Ni commission, ni prise de participation.</span></div>
+</div>
+</section>
+
+<section id="monge">
+<div class="content">
+<div class="mono eyebrow">06 / GASPARD MONGE, 1746 — 1818</div>
+<h2 class="display" style="font-size:clamp(36px,4.4vw,64px)">Un secret militaire devenu science</h2>
+<p class="lead" style="color:var(--muted)">Jeune dessinateur à l'école du génie de Mézières, Monge résout un problème de fortification en quelques jours. Sa méthode, la géométrie descriptive, reste des années un secret militaire. Il fondera l'École polytechnique. La science au service des armées : c'est l'esprit du Cercle.</p>
+</div>
+<div class="monge-fig">
+<svg viewBox="0 0 660 660" fill="none" aria-hidden="true">
+<circle cx="330" cy="330" r="329" stroke="#D4A94F" stroke-width="2"/>
+<line x1="43.3" y1="205.4" x2="660" y2="76.5" stroke="#5A5852"/>
+<line x1="517.7" y1="-120" x2="660" y2="556.6" stroke="#5A5852"/>
+<circle cx="563.3" cy="96.7" r="7" fill="#D4A94F"/>
+</svg>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Portrait_de_Gaspard_Monge%2C_G.20828-116.jpg/1280px-Portrait_de_Gaspard_Monge%2C_G.20828-116.jpg" alt="Portrait gravé de Gaspard Monge, de profil" loading="lazy">
+</div>
+</section>
+
+<section id="rejoindre">
+<div class="join-left">
+<div class="mono eyebrow">07 / REJOINDRE</div>
+<h2 class="display">Un cercle fermé.<br>Nous cherchons les meilleurs.</h2>
+<p class="lead" style="color:var(--muted)">Dites-nous qui vous êtes et ce que vous apportez. Chaque candidature reçoit une réponse.</p>
+<div class="roles" role="group" aria-label="Je suis">
+<button type="button" class="role" data-role="parrain" aria-pressed="false"><span>PARRAIN</span><span class="mono">VIEILLE GARDE</span></button>
+<button type="button" class="role" data-role="fondateur" aria-pressed="true"><span>FONDATEUR</span><span class="mono">JEUNE GARDE</span></button>
+<button type="button" class="role" data-role="partenaire" aria-pressed="false"><span>PARTENAIRE</span><span class="mono">SOUTIEN DU CERCLE</span></button>
+</div>
+</div>
+<form id="join" novalidate>
+<label class="f">PRÉNOM ET NOM<input type="text" name="nom" autocomplete="name" required></label>
+<label class="f">E-MAIL<input type="email" name="email" autocomplete="email" required></label>
+<label class="f">ORGANISATION ET FONCTION<input type="text" name="organisation" autocomplete="organization-title"></label>
+<label class="f"><span id="q">VOTRE BLOCAGE PRINCIPAL</span><textarea name="message" rows="4"></textarea></label>
+<label class="consent"><input type="checkbox" name="rgpd" required><span>J'accepte que mes données soient utilisées pour traiter ma candidature.</span></label>
+<button type="submit" class="submit">ENVOYER MA CANDIDATURE <svg width="18" height="12" viewBox="0 0 18 12" fill="none" aria-hidden="true"><path d="M0 6h16M11 1l5 5-5 5" stroke="currentColor" stroke-width="2"/></svg></button>
+<div class="form-msg" id="msg" aria-live="polite"></div>
+</form>
+</section>
+</main>
+
+<footer>
+<span class="logo">CERCLE MONGE</span>
+<div class="links mono">
+<a href="mailto:contact@cerclemonge.fr">CONTACT@CERCLEMONGE.FR</a>
+<span>PHOTOS : WIKIMEDIA COMMONS</span>
+<span>© 2026</span>
+</div>
+</footer>
+
+<script>
+(function(){
+  var CONTACT = 'contact@cerclemonge.fr';
+  var hdr = document.getElementById('hdr');
+  function onScroll(){ hdr.classList.toggle('solid', window.scrollY > 40); }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  var questions = {parrain:'CE QUE VOUS SOUHAITEZ TRANSMETTRE', fondateur:'VOTRE BLOCAGE PRINCIPAL', partenaire:'CE QUE VOUS PROPOSEZ AU CERCLE'};
+  var labels = {parrain:'Parrain', fondateur:'Fondateur', partenaire:'Partenaire'};
+  var hints = {parrain:'VIEILLE GARDE', fondateur:'JEUNE GARDE', partenaire:'SOUTIEN DU CERCLE'};
+  var current = 'fondateur';
+  var roles = document.querySelectorAll('.role');
+  function setRole(r){
+    current = r;
+    roles.forEach(function(b){
+      var on = b.dataset.role === r;
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      b.lastElementChild.textContent = on ? 'SÉLECTIONNÉ' : hints[b.dataset.role];
+    });
+    document.getElementById('q').textContent = questions[r];
+  }
+  roles.forEach(function(b){ b.addEventListener('click', function(){ setRole(b.dataset.role); }); });
+  document.querySelectorAll('a[data-role]').forEach(function(a){ a.addEventListener('click', function(){ setRole(a.dataset.role); }); });
+  setRole('fondateur');
+
+  document.getElementById('join').addEventListener('submit', function(e){
+    e.preventDefault();
+    var f = e.target, msg = document.getElementById('msg');
+    if (!f.nom.value.trim() || !f.email.value.trim()) { msg.textContent = 'Merci d’indiquer votre nom et votre e-mail.'; return; }
+    if (!f.rgpd.checked) { msg.textContent = 'Merci d’accepter l’utilisation de vos données.'; return; }
+    var body = 'Profil : ' + labels[current] + '\nNom : ' + f.nom.value + '\nE-mail : ' + f.email.value + '\nOrganisation : ' + f.organisation.value + '\n\n' + questions[current] + ' :\n' + f.message.value;
+    window.location.href = 'mailto:' + CONTACT + '?subject=' + encodeURIComponent('Candidature Cercle Monge — ' + labels[current]) + '&body=' + encodeURIComponent(body);
+    msg.textContent = 'Votre messagerie s’ouvre pour envoyer la candidature.';
+  });
+})();
+</script>
+</body>
+</html>
