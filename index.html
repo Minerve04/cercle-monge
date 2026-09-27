@@ -313,21 +313,18 @@ footer .links{display:flex;flex-wrap:wrap;gap:24px 40px;font-size:12px;letter-sp
     var btn = f.querySelector('.submit');
     btn.disabled = true; btn.style.opacity = '.6';
     msg.textContent = 'Envoi en cours\u2026';
-    fetch('https://formsubmit.co/ajax/' + CONTACT, {
+    fetch('https://script.google.com/macros/s/AKfycbw0cCDte4Jjnd_wuiowr7sOGyCL52ZI6Z-LK1MoyPIsxUWNFSF0zHkasCNWtZ8SXtcyXA/exec', {
       method: 'POST',
-      headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
       body: JSON.stringify({
-        _subject: 'Candidature Cercle Monge \u2014 ' + labels[current],
-        _template: 'table',
         _honey: f._honey.value,
-        Profil: labels[current],
-        Nom: f.nom.value,
+        profil: labels[current],
+        nom: f.nom.value,
         email: f.email.value,
-        Organisation: f.organisation.value,
-        Message: f.message.value
+        organisation: f.organisation.value,
+        message: f.message.value
       })
     }).then(function(r){ return r.json(); }).then(function(data){
-      if (data && (data.success === true || data.success === 'true')) {
+      if (data && data.ok === true) {
         f.reset(); setRole(current);
         msg.textContent = 'Merci. Votre candidature a bien \u00e9t\u00e9 envoy\u00e9e, nous revenons vers vous rapidement.';
       } else { throw new Error('fail'); }
