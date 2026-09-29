@@ -63,7 +63,7 @@ nav a:hover{color:var(--accent)}
 /* table */
 #table{position:relative;min-height:900px;border-top:1px solid #141414;padding:0 var(--pad);display:flex;align-items:center;gap:48px}
 #table .content{position:static;flex:1 1 520px;max-width:600px;display:flex;flex-direction:column;gap:24px}
-#table svg{flex:1 1 520px;max-width:620px;height:auto}
+#table>svg{flex:1 1 520px;max-width:620px;height:auto}
 .table-label{position:absolute;right:var(--pad);top:120px;text-align:right;display:flex;flex-direction:column;gap:6px;font-size:12px;letter-spacing:.14em;color:#77746B}
 
 /* specs */
@@ -72,6 +72,18 @@ nav a:hover{color:var(--accent)}
 .spec:first-child{border-left:0;padding-left:0}
 .spec b{font-weight:800;font-stretch:125%;font-size:clamp(56px,6vw,96px);line-height:1}
 .spec span{color:var(--dim)}
+
+/* activites */
+.activites{border-top:1px solid var(--line);padding:clamp(72px,10vw,120px) var(--pad);display:flex;flex-direction:column;gap:72px}
+.act-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px}
+.act-head p{margin:0;max-width:420px;font-size:17px;line-height:1.55;color:var(--muted)}
+.acts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:2px solid var(--ink)}
+.act{padding:32px 32px 0;border-left:1px solid var(--line);display:flex;flex-direction:column;gap:16px}
+.act:first-child{border-left:0;padding-left:0}
+.act .n{font-weight:800;font-stretch:125%;font-size:48px;line-height:1}
+.act .t{font-weight:700;font-stretch:112%;font-size:20px;letter-spacing:.06em;text-transform:uppercase}
+.act .d{font-size:16px;line-height:1.55;color:var(--muted)}
+.act .r{color:var(--accent);font-size:12px}
 
 /* charte */
 .charte{display:flex;flex-direction:column;gap:72px}
@@ -116,7 +128,8 @@ footer .links{display:flex;flex-wrap:wrap;gap:24px 40px;font-size:12px;letter-sp
   .specs{grid-template-columns:repeat(2,minmax(0,1fr))}
   .spec:nth-child(3){border-left:0;padding-left:0}
   .spec{padding:48px 20px}
-  .rules{grid-template-columns:1fr}
+  .rules,.acts{grid-template-columns:1fr}
+  .act{border-left:0;padding:28px 0;border-bottom:1px solid var(--line)}
   .rule{border-left:0;padding:28px 0;border-bottom:1px solid #CFCBC0}
   #rejoindre{grid-template-columns:1fr;gap:24px}
   #vieille>img{width:100%;opacity:.6}
@@ -132,7 +145,7 @@ footer .links{display:flex;flex-wrap:wrap;gap:24px 40px;font-size:12px;letter-sp
 <nav aria-label="Navigation principale">
 <a href="#vieille">VIEILLE GARDE</a>
 <a href="#jeune">JEUNE GARDE</a>
-<a href="#table">LA TABLE</a>
+<a href="#activites">LE CERCLE</a>
 <a href="#charte">CHARTE</a>
 <a href="#monge">MONGE</a>
 </nav>
@@ -185,54 +198,69 @@ footer .links{display:flex;flex-wrap:wrap;gap:24px 40px;font-size:12px;letter-sp
 <div class="credit mono">PHOTO DVIDS — DOMAINE PUBLIC</div>
 </section>
 
+<section id="activites" class="activites">
+<div class="act-head">
+<div style="display:flex;flex-direction:column;gap:20px">
+<div class="mono eyebrow">04 / CE QUE FAIT LE CERCLE</div>
+<h2 class="display" style="font-size:clamp(36px,4.4vw,64px)">Challenger. Réfléchir.<br>Transmettre. Relier.</h2>
+</div>
+<p>Le Cercle met l'expertise métier de la défense au service des entrepreneurs. Quatre activités, un seul fil : confronter tôt les technologies à la réalité du terrain, de l'acquisition et de l'industrie.</p>
+</div>
+<div class="acts">
+<div class="act"><span class="n">I</span><span class="t">Conseil de révision</span><span class="d">Un fondateur présente sa technologie devant quatre ou cinq experts : un opérationnel, un acheteur, un industriel, un financeur. Quarante minutes de questions franches, puis un verdict écrit.</span><span class="r mono">CHAQUE MOIS</span></div>
+<div class="act"><span class="n">II</span><span class="t">Séance du Cercle</span><span class="d">Un thème stratégique, vingt membres, la règle de Chatham House. Drones, lutte anti-drone, spatial, économie de guerre. Une note de synthèse en sort.</span><span class="r mono">CHAQUE TRIMESTRE</span></div>
+<div class="act"><span class="n">III</span><span class="t">Parrainage</span><span class="d">Un membre de la Vieille Garde accompagne un fondateur pendant six mois, une heure par mois, sur des objectifs fixés au départ.</span><span class="r mono">SIX MOIS</span></div>
+<div class="act"><span class="n">IV</span><span class="t">Mise en relation</span><span class="d">Chaque fondateur formule une demande précise : un contact, une information, un retour d'expérience. Les introductions se font avec l'accord des deux parties.</span><span class="r mono">À CHAQUE SÉANCE</span></div>
+</div>
+</section>
+
 <section id="table">
 <div class="content">
-<div class="mono eyebrow">04 / LE FORMAT</div>
-<h2 class="display">Une table.<br>Dix couverts.</h2>
-<p class="lead" style="color:var(--muted)">Un dîner par mois. Chaque fondateur expose son blocage en trois minutes. Puis on parle franchement, sous la règle de Chatham House. Les mises en relation promises sont faites sous 48 heures.</p>
+<div class="mono eyebrow">05 / LE CONSEIL DE RÉVISION</div>
+<h2 class="display">Un fondateur.<br>Cinq experts.</h2>
+<p class="lead" style="color:var(--muted)">Vingt minutes pour présenter. Quarante minutes de questions sans complaisance : le besoin opérationnel est-il réel, quelle voie d’acquisition, quelle concurrence ? Le fondateur repart avec un verdict écrit et trois recommandations.</p>
 <a href="#charte" class="btn">LIRE LA CHARTE <svg width="18" height="12" viewBox="0 0 18 12" fill="none" aria-hidden="true"><path d="M0 6h16M11 1l5 5-5 5" stroke="currentColor" stroke-width="2"/></svg></a>
 </div>
-<svg viewBox="740 190 600 420" fill="none" role="img" aria-label="Plan de table : quatre parrains et six fondateurs autour d'une table">
-<rect x="760" y="300" width="560" height="220" stroke="#F4F2EC" stroke-width="2"/>
-<line x1="760" y1="410" x2="1320" y2="410" stroke="#2A2A2A" stroke-dasharray="3 7"/>
-<g stroke="#F4F2EC" stroke-width="1.5"><circle cx="816" cy="246" r="26"/><circle cx="1040" cy="246" r="26"/><circle cx="1264" cy="246" r="26"/><circle cx="816" cy="574" r="26"/><circle cx="1040" cy="574" r="26"/><circle cx="1264" cy="574" r="26"/></g>
-<g fill="#D4A94F"><circle cx="928" cy="246" r="26"/><circle cx="1152" cy="246" r="26"/><circle cx="928" cy="574" r="26"/><circle cx="1152" cy="574" r="26"/></g>
-<g font-family="IBM Plex Mono, monospace" font-size="14" font-weight="500" text-anchor="middle">
-<text x="816" y="251" fill="#F4F2EC">F</text><text x="1040" y="251" fill="#F4F2EC">F</text><text x="1264" y="251" fill="#F4F2EC">F</text>
-<text x="816" y="579" fill="#F4F2EC">F</text><text x="1040" y="579" fill="#F4F2EC">F</text><text x="1264" y="579" fill="#F4F2EC">F</text>
-<text x="928" y="251" fill="#000">P</text><text x="1152" y="251" fill="#000">P</text><text x="928" y="579" fill="#000">P</text><text x="1152" y="579" fill="#000">P</text>
+<svg viewBox="740 190 600 420" fill="none" role="img" aria-label="Conseil de révision : un fondateur face à cinq experts autour d'une table">
+<rect x="860" y="300" width="460" height="220" stroke="#F4F2EC" stroke-width="2"/>
+<line x1="860" y1="410" x2="1320" y2="410" stroke="#2A2A2A" stroke-dasharray="3 7"/>
+<g stroke="#F4F2EC" stroke-width="1.5"><circle cx="800" cy="410" r="30"/></g>
+<g fill="#D4A94F"><circle cx="980" cy="246" r="26"/><circle cx="1200" cy="246" r="26"/><circle cx="980" cy="574" r="26"/><circle cx="1200" cy="574" r="26"/><circle cx="1090" cy="246" r="26"/></g>
+<g font-family="IBM Plex Mono, monospace" font-size="13" font-weight="500" text-anchor="middle" fill="#000">
+<text x="980" y="251">OPS</text><text x="1090" y="251">DGA</text><text x="1200" y="251">IND</text><text x="980" y="579">FIN</text><text x="1200" y="579">EXP</text>
 </g>
-<text x="1040" y="415" font-family="IBM Plex Mono, monospace" font-size="12" letter-spacing="2" fill="#77746B" text-anchor="middle">CHATHAM HOUSE</text>
+<text x="800" y="415" font-family="IBM Plex Mono, monospace" font-size="14" font-weight="500" fill="#F4F2EC" text-anchor="middle">F</text>
+<text x="1090" y="415" font-family="IBM Plex Mono, monospace" font-size="12" letter-spacing="2" fill="#77746B" text-anchor="middle">CHATHAM HOUSE</text>
 </svg>
-<div class="table-label mono"><span>PLAN DE TABLE</span><span>P = PARRAIN · F = FONDATEUR</span></div>
+<div class="table-label mono"><span>CONSEIL DE RÉVISION</span><span>F = FONDATEUR · OPS · DGA · INDUSTRIE · FINANCEMENT · EXPERT</span></div>
 </section>
 
 <section class="specs">
-<div class="spec"><b>1</b><span class="mono">DÎNER PAR MOIS</span></div>
-<div class="spec"><b>4</b><span class="mono">PARRAINS À TABLE</span></div>
-<div class="spec"><b>6</b><span class="mono">FONDATEURS SÉLECTIONNÉS</span></div>
+<div class="spec"><b>10</b><span class="mono">CONSEILS DE RÉVISION PAR AN</span></div>
+<div class="spec"><b>4</b><span class="mono">SÉANCES DU CERCLE PAR AN</span></div>
+<div class="spec"><b>6</b><span class="mono">MOIS DE PARRAINAGE</span></div>
 <div class="spec"><b style="color:var(--accent)">0 €</b><span class="mono">DE COMMISSION</span></div>
 </section>
 
 <section id="charte" class="light charte">
 <div class="charte-head">
 <div style="display:flex;flex-direction:column;gap:20px">
-<div class="mono dim">05 / LA CHARTE</div>
+<div class="mono dim">06 / LA CHARTE</div>
 <h2 class="display" style="font-size:clamp(36px,4.4vw,64px)">Quatre règles.<br>Aucune exception.</h2>
 </div>
 <p>Le Cercle est une association d'intérêt général. Il ne vend rien et ne prend rien.</p>
 </div>
 <div class="rules">
-<div class="rule"><span class="n">I</span><span class="t">Chatham House</span><span class="d">Ce qui se dit à table n'est jamais attribué.</span></div>
+<div class="rule"><span class="n">I</span><span class="t">Chatham House</span><span class="d">Ce qui se dit en séance n'est jamais attribué. Les projets présentés restent confidentiels.</span></div>
 <div class="rule"><span class="n">II</span><span class="t">Pas de démarchage</span><span class="d">On vient pour échanger, pas pour vendre.</span></div>
-<div class="rule"><span class="n">III</span><span class="t">Déontologie</span><span class="d">Aucun conflit d'intérêts actif. Règles de reconversion respectées.</span></div>
+<div class="rule"><span class="n">III</span><span class="t">Déontologie</span><span class="d">Chaque membre déclare ses intérêts. Les règles des anciens agents publics sont respectées.</span></div>
 <div class="rule"><span class="n">IV</span><span class="t">Désintéressement</span><span class="d">Ni commission, ni prise de participation.</span></div>
 </div>
 </section>
 
 <section id="monge">
 <div class="content">
-<div class="mono eyebrow">06 / GASPARD MONGE, 1746 — 1818</div>
+<div class="mono eyebrow">07 / GASPARD MONGE, 1746 — 1818</div>
 <h2 class="display" style="font-size:clamp(36px,4.4vw,64px)">Un secret militaire devenu science</h2>
 <p class="lead" style="color:var(--muted)">Jeune dessinateur à l'école du génie de Mézières, Monge résout un problème de fortification en quelques jours. Sa méthode, la géométrie descriptive, reste des années un secret militaire. Il fondera l'École polytechnique. La science au service des armées : c'est l'esprit du Cercle.</p>
 </div>
@@ -249,7 +277,7 @@ footer .links{display:flex;flex-wrap:wrap;gap:24px 40px;font-size:12px;letter-sp
 
 <section id="rejoindre">
 <div class="join-left">
-<div class="mono eyebrow">07 / REJOINDRE</div>
+<div class="mono eyebrow">08 / REJOINDRE</div>
 <h2 class="display">Un cercle fermé.<br>Nous cherchons les meilleurs.</h2>
 <p class="lead" style="color:var(--muted)">Dites-nous qui vous êtes et ce que vous apportez. Chaque candidature reçoit une réponse.</p>
 <div class="roles" role="group" aria-label="Je suis">
